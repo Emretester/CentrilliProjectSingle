@@ -201,24 +201,4 @@ public class VehiclesOdometer_StepDefinitions {
         Assert.assertEquals(secondOdometerNumber, firstOdometerNumber + 1);
     }
 
-
-
-
-/*
-    @When("user clicks create button and see the number of odometer increased one")
-    public void user_clicks_create_button_and_see_the_number_of_odometer_increased_one() {
-        BrowserUtils.waitFor(5);
-        vehiclesOdometerPage.vehicleClearButton.click();
-        BrowserUtils.waitFor(5);
-        int firstOdometerNumber = Integer.parseInt(vehiclesOdometerPage.odometerNumber.getText());
-        BrowserUtils.waitFor(5);
-        vehiclesOdometerPage.createButton.click();
-        BrowserUtils.waitFor(5);
-        int secondOdometerNumber = Integer.parseInt(vehiclesOdometerPage.odometerNumber.getText());
-        BrowserUtils.waitFor(5);
-        Assert.assertEquals(secondOdometerNumber, firstOdometerNumber + 1);
-    }
-
- */
-
 }
