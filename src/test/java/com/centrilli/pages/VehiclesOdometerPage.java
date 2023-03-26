@@ -71,5 +71,8 @@ public class VehiclesOdometerPage {
     @FindBy(xpath = "//span[@class='o_pager_limit']")
     public WebElement odometerNumber;
 
+    @FindBy(xpath = "//div[@class='fa fa-sm fa-remove o_facet_remove']")
+    public WebElement vehicleClearButton;
+
 
 }

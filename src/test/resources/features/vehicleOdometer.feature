@@ -41,11 +41,9 @@ Feature: Vehicle odometer functionality
     When user clicks List button odometer display changes to List
     When user clicks Graph button odometer display changes Graph
 
-  @wip
   Scenario: user can see the number of odometer increased 1
-    When user clears search box
-    And user clicks create button
-    Then number of odometer increased one
+    When user clicks create button and see the number of odometer increased one
+
 
 
 
