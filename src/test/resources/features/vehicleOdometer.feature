@@ -42,7 +42,9 @@ Feature: Vehicle odometer functionality
     When user clicks Graph button odometer display changes Graph
 
   Scenario: user can see the number of odometer increased 1
-    When user clicks create button and see the number of odometer increased one
+    When user can see the number of odometer
+    And user clicks create button
+    Then user can see the number of odometer increased one
 
 
 

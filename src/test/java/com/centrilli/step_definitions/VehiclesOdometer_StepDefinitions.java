@@ -17,6 +17,8 @@ public class VehiclesOdometer_StepDefinitions {
     CentrilliLoginPage centrilliLoginPage = new CentrilliLoginPage();
     VehiclesOdometerPage vehiclesOdometerPage = new VehiclesOdometerPage();
 
+    int firstOdometerNumber;
+    int secondOdometerNumber;
 
     @Given("user has logged in the web site")
     public void user_has_logged_in_the_web_site() {
@@ -181,7 +183,28 @@ public class VehiclesOdometer_StepDefinitions {
     }
 
     // 8- Verify that the number of Odometer increased 1
-    
+
+    @When("user can see the number of odometer")
+    public void user_can_see_the_number_of_odometer() {
+        BrowserUtils.waitFor(5);
+        vehiclesOdometerPage.vehicleClearButton.click();
+        BrowserUtils.waitFor(5);
+        firstOdometerNumber = Integer.parseInt(vehiclesOdometerPage.odometerNumber.getText());
+
+    }
+
+    @Then("user can see the number of odometer increased one")
+    public void user_can_see_the_number_of_odometer_increased_one() {
+        BrowserUtils.waitFor(5);
+        secondOdometerNumber = Integer.parseInt(vehiclesOdometerPage.odometerNumber.getText());
+        BrowserUtils.waitFor(5);
+        Assert.assertEquals(secondOdometerNumber, firstOdometerNumber + 1);
+    }
+
+
+
+
+/*
     @When("user clicks create button and see the number of odometer increased one")
     public void user_clicks_create_button_and_see_the_number_of_odometer_increased_one() {
         BrowserUtils.waitFor(5);
@@ -192,7 +215,10 @@ public class VehiclesOdometer_StepDefinitions {
         vehiclesOdometerPage.createButton.click();
         BrowserUtils.waitFor(5);
         int secondOdometerNumber = Integer.parseInt(vehiclesOdometerPage.odometerNumber.getText());
+        BrowserUtils.waitFor(5);
         Assert.assertEquals(secondOdometerNumber, firstOdometerNumber + 1);
     }
+
+ */
 
 }
