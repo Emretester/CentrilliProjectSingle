@@ -73,7 +73,7 @@ public class VehiclesOdometer_StepDefinitions {
         Assert.assertTrue(vehiclesOdometerPage.saveButton.isDisplayed());
     }
 
-    // 3. Verify that user can cancel creating by clicking Discard button
+    // 5. Verify that user can cancel creating by clicking Discard button
 
     @When("user clicks discard button")
     public void user_clicks_discard_button() {
@@ -107,11 +107,11 @@ public class VehiclesOdometer_StepDefinitions {
 
     }
 
-    @When("user enters {double} as odometer value")
-    public void user_enters_as_odometer_value(double odometerValue) {
+    @When("user enters {string} as odometer value")
+    public void user_enters_as_odometer_value(String odometerValue) {
         BrowserUtils.waitFor(5);
         vehiclesOdometerPage.odometerValueInputBox.clear();
-        vehiclesOdometerPage.odometerValueInputBox.sendKeys(odometerValue + "");
+        vehiclesOdometerPage.odometerValueInputBox.sendKeys(odometerValue);
     }
 
     @When("user clicks save button")
@@ -131,10 +131,10 @@ public class VehiclesOdometer_StepDefinitions {
 
     // 6. Verify that user can find the new created Odometer value under Odometer list by using search box.
 
-    @When("user enters {double} as odometer value in search box")
-    public void user_enters_as_odometer_value_in_search_box(double odometerValue) {
+    @When("user enters {string} as odometer value in search box")
+    public void user_enters_as_odometer_value_in_search_box(String odometerValue) {
         BrowserUtils.waitFor(5);
-        vehiclesOdometerPage.searchBox.sendKeys(odometerValue + "");
+        vehiclesOdometerPage.searchBox.sendKeys(odometerValue);
 
     }
 
@@ -147,11 +147,52 @@ public class VehiclesOdometer_StepDefinitions {
 
     }
 
-    @Then("{double} odometer value is found")
-    public void odometer_value_is_found(double odometerValue) {
+    @Then("{string} odometer value is found")
+    public void odometer_value_is_found(String odometerValue) {
         BrowserUtils.waitFor(5);
         Assert.assertEquals(odometerValue, vehiclesOdometerPage.listedOdometerValue.getText());
     }
 
+    // 7. Verify that user can change Odometer display to Kanban / List / Graph
+
+    @When("user clicks Kanban button odometer display changes to Kanban")
+    public void user_clicks_kanban_button_odometer_display_changes_to_kanban() {
+        BrowserUtils.waitFor(5);
+        vehiclesOdometerPage.kanbanButton.click();
+        BrowserUtils.waitFor(5);
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("kanban"));
+    }
+
+
+    @When("user clicks List button odometer display changes to List")
+    public void user_clicks_list_button_odometer_display_changes_to_list() {
+        BrowserUtils.waitFor(5);
+        vehiclesOdometerPage.listButton.click();
+        BrowserUtils.waitFor(5);
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("list"));
+    }
+
+    @When("user clicks Graph button odometer display changes Graph")
+    public void user_clicks_graph_button_odometer_display_changes_graph() {
+        BrowserUtils.waitFor(5);
+        vehiclesOdometerPage.graphButton.click();
+        BrowserUtils.waitFor(5);
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("graph"));
+    }
+
+    // 8- Verify that the number of Odometer increased 1
+    
+    @When("user clicks create button and see the number of odometer increased one")
+    public void user_clicks_create_button_and_see_the_number_of_odometer_increased_one() {
+        BrowserUtils.waitFor(5);
+        vehiclesOdometerPage.vehicleClearButton.click();
+        BrowserUtils.waitFor(5);
+        int firstOdometerNumber = Integer.parseInt(vehiclesOdometerPage.odometerNumber.getText());
+        BrowserUtils.waitFor(5);
+        vehiclesOdometerPage.createButton.click();
+        BrowserUtils.waitFor(5);
+        int secondOdometerNumber = Integer.parseInt(vehiclesOdometerPage.odometerNumber.getText());
+        Assert.assertEquals(secondOdometerNumber, firstOdometerNumber + 1);
+    }
 
 }

@@ -27,14 +27,23 @@ Feature: Vehicle odometer functionality
   Scenario: Attachment and Action buttons are displayed at the top of the page (after creating a new Odometer).
     When user clicks create button
     And user enters "audi" as vehicle value
-    And user enters 132.00 as odometer value
+    And user enters "132.00" as odometer value
     And user clicks save button
     Then attachment and action buttons are displayed at the top of the page
 
-  @wip
   Scenario: user can find the new created odometer value under odometer list by using search box.
-    When user enters 132.00 as odometer value in search box
+    When user enters "132.00" as odometer value in search box
     And user selects odometer value search option
-    Then 132.00 odometer value is found
+    Then "132.00" odometer value is found
+
+  Scenario: user can change odometer display to Kanban / List / Graph
+    When user clicks Kanban button odometer display changes to Kanban
+    When user clicks List button odometer display changes to List
+    When user clicks Graph button odometer display changes Graph
+
+  Scenario: user can see the number of odometer increased 1
+    When user clicks create button and see the number of odometer increased one
+
+
 
 

@@ -59,5 +59,20 @@ public class VehiclesOdometerPage {
     @FindBy(xpath = "//td[@class='o_list_number']")
     public WebElement listedOdometerValue;
 
+    @FindBy(xpath = "//button[@data-original-title='Kanban']")
+    public WebElement kanbanButton;
+
+    @FindBy(xpath = "//button[@data-original-title='List']")
+    public WebElement listButton;
+
+    @FindBy(xpath = "//button[@data-original-title='Graph']")
+    public WebElement graphButton;
+
+    @FindBy(xpath = "//span[@class='o_pager_limit']")
+    public WebElement odometerNumber;
+
+    @FindBy(xpath = "//div[@class='fa fa-sm fa-remove o_facet_remove']")
+    public WebElement vehicleClearButton;
+
 
 }
