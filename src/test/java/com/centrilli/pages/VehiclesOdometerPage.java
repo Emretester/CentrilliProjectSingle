@@ -74,5 +74,4 @@ public class VehiclesOdometerPage {
     @FindBy(xpath = "//div[@class='fa fa-sm fa-remove o_facet_remove']")
     public WebElement vehicleClearButton;
 
-
 }
