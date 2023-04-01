@@ -75,7 +75,7 @@ public class VehiclesOdometer_StepDefinitions {
         Assert.assertTrue(vehiclesOdometerPage.saveButton.isDisplayed());
     }
 
-    // 5. Verify that user can cancel creating by clicking Discard button
+    // 3. Verify that user can cancel creating by clicking Discard button
 
     @When("user clicks discard button")
     public void user_clicks_discard_button() {
